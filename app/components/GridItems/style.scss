@@ -1,0 +1,16 @@
+.masonry-layout {
+	column-count: 3;
+	column-gap: 0;
+
+	.panel {
+		break-inside: avoid;
+		padding: 5px;
+	}
+
+	.content {
+		padding: 10px;
+		border-radius: 10px;
+		background: red;
+		min-height: 50px;
+	}
+}

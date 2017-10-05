@@ -1,0 +1,37 @@
+@import '../../variables';
+
+aside{
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	left: 0;
+	width: 33%;
+	vertical-align: middle;
+	align-items: center;
+	display: flex !important;
+
+	.content{
+		//display: flex;
+		padding-left: 50px;
+	}
+
+	h1{
+		margin-bottom: 50px;
+		span{
+			position: relative;
+			z-index: 2;
+
+			&:after{
+				content: "";
+				display: block;
+				height: 50%;
+				position: absolute;
+				z-index: -1;
+				width: 100%;
+				background: $contrastColor;
+				top: 30px;
+				left: 11px;
+			}
+		}
+	}
+}

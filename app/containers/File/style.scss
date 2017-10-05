@@ -1,0 +1,121 @@
+.image{
+
+	img{
+		transition: opacity ease-in .1s;
+		display: block;
+
+		&.loading{
+			opacity: 0;
+		}
+
+		&.loaded{
+			opacity: 1;
+		}
+	}
+
+	&.list-view{
+		display: flex;
+		margin-bottom: 10px;
+		align-items: center;
+		position: relative;
+		min-height: 50px;
+
+		.text{
+			margin-left: 15px;
+			font-size: 10pt;
+		}
+
+		img{
+			width: 50px;
+			animation: fade 1s both;
+			animation-delay: 1s;
+		}
+
+		.image-loading{
+			width: 50px;
+			height: 50px;
+			border-radius: 5px;
+		}
+	}
+
+	&.view{
+
+		img{
+			width: 100%;
+			animation: fade 1s both;
+			animation-delay: 1s;
+		}
+
+		.image-loading{
+			width: 100%;
+			height: 200px;
+			border-radius: 5px;
+		}
+	}
+}
+
+.file-button{
+	input{
+		display: none;
+	}
+
+	.btn{
+		position: relative;
+		overflow: hidden;
+
+		.uploading-bar{
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: red;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			transition: transform ease-in-out .5s .2s, opacity ease-in-out .1s;
+			transform: translateX(-100%);
+		}
+
+		&.uploading{
+
+		}
+
+		&.uploaded{
+			.uploading-bar{
+				opacity: 0;
+			}
+		}
+
+		.button-content{
+			position: relative;
+			z-index: 2;
+		}
+	}
+}
+
+.image-loading{
+	animation: blink 4s infinite both;
+	background: #1b1b1f;
+	display: block;
+}
+
+@keyframes blink {
+	0%,
+	50%,
+	100% {
+		opacity: 0.6;
+	}
+	25%,
+	75% {
+		opacity: 0.3;
+	}
+}
+
+@keyframes fade {
+	0%{
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
