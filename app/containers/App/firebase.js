@@ -2,15 +2,9 @@ const firebase = require('firebase/app');
 require('firebase/auth');
 require('firebase/database');
 require('firebase/storage');
+import config from './firebaseConfig'
 import ReduxSagaFirebase from 'redux-saga-firebase';
-const  config = {
-    apiKey: "AIzaSyDAcZBGfq6aAZl8B-oeqX8jIxryJAEQg3A",
-    authDomain: "portfolio-d6c32.firebaseapp.com",
-    databaseURL: "https://portfolio-d6c32.firebaseio.com",
-    projectId: "portfolio-d6c32",
-    storageBucket: "gs://portfolio-d6c32.appspot.com/",
-    messagingSenderId: "763692698732"
-};
+
 const firebaseApp = firebase.initializeApp(config);
 
 export const ref = firebase.database().ref()
