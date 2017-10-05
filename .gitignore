@@ -9,4 +9,4 @@ stats.json
 npm-debug.log
 .idea
 
-src/app/containers/App/firebaseConfig.js
+app/containers/App/firebaseConfig.js
