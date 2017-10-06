@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the works state domain
  */
-const selectWorksDomain = (state) => state.get('works');
+const selectWorksDomain = (state) => state && state.get('works');
 
 /**
  * Other specific selectors

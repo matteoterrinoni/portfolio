@@ -56,13 +56,13 @@
 			 			<div className="col-xs-12 col-sm-12 col-md-8 col-lg-7 col-xl-6 main-content">
 			 				<MainNav/>
 			 				<article>
-						 		<Switch>
-							 		<Route exact path="/" component={Works} />
-							 		<Route path={sections.works.path} component={Works} />
-							 		<Route exact path={sections.photos.path} component={Photos} />
-							 		<Route exact path={'/admin'} component={Login} />
-							 		<Route component={NotFoundPage} />
-						 		</Switch>
+				 				<Switch>
+					 				<Route exact path='/' component={Works} />
+					 				<Route path={sections.works.path} component={Works} />
+					 				<Route exact path={sections.photos.path} component={Photos} />
+					 				<Route exact path={'/admin'} component={Login} />
+					 				<Route component={NotFoundPage} />
+				 				</Switch>
 					 		</article>
 				 		</div>
 			 		</div>

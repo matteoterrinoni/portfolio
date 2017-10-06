@@ -12,6 +12,8 @@ import { matchPath } from 'react-router';
 import { withRouter } from 'react-router'
 import { FormattedMessage } from 'react-intl';
 import {merge} from 'ramda'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 import messages from './messages';
 import './style.scss'
@@ -25,26 +27,34 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 
 		return (
 			<nav className="menu menu--alonso main-nav col-xs-12 col-sm-12 col-md-8 col-lg-7 col-xl-6">
-				{
-					Object.keys(sections).map(s=>{
-							let section = sections[s];
-							const newPath = merge(section.matchPath, {
-									exact:true,
-									path: section.matchPath.path+'/:id'
-								});
-							const match = matchPath(location.pathname, newPath);
+				<ReactCSSTransitionGroup
+					transitionName="fade-left"
+					transitionAppear={true}
+					transitionEnterTimeout={1000}
+					transitionAppearTimeout={1000}
+					transitionLeaveTimeout={1000}>
+					{
+						Object.keys(sections).map(s=>{
+								let section = sections[s];
+								const newPath = merge(section.matchPath, {
+										exact:true,
+										path: section.matchPath.path+'/:id'
+									});
+								const match = matchPath(location.pathname, newPath);
 
-							return !match ? null :
-							(
-								<li key={s} className={`menu__item back`}>
-									<Link className="menu__link" to={{
-										pathname: section.path
-										}}><i className="material-icons">arrow_back</i> <FormattedMessage {...messages.back} />
-									</Link>
-								</li>
-							)	
-						})
-				}
+								return !match ? null :
+								(
+									<li key={s} className={`menu__item back`}>
+										<Link className="menu__link" to={{
+											pathname: section.path
+											}}><i className="material-icons">arrow_back</i> <FormattedMessage {...messages.back} />
+										</Link>
+									</li>
+								)	
+							})
+					}
+				</ReactCSSTransitionGroup>
+
 				<ul className="menu__list">
 					{
 						Object.keys(sections).map(s=>{

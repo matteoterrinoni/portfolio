@@ -25,6 +25,8 @@
  import File from 'containers/File/Loadable'
  import { methodTypes } from 'containers/File/model'
  import InfoList from 'components/InfoList'
+ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
  import './style.scss';
 
@@ -74,57 +76,65 @@ export class Work extends React.PureComponent { // eslint-disable-line react/pre
     const { work, match, user } = this.props;
     const editing = work;
     return !work?null:(
-      <div className="work-page">
-      <Helmet>
-      <title>{work.title}</title>
-      <meta name="description" content="Description of Work" />
-      </Helmet>
-      <div className="work-head">
-      <h1>{work.title}</h1>
-      { work.link && <div className="link"><a href={work.link} target="_blank"><i className="material-icons">link</i> {work.link}</a></div> }
-      </div>
-      <InfoList list={
-        Object.keys(articleProperties).map(key=>({
-          label:articleProperties[key].label,
-          value:work[articleProperties[key].id]
-        }))
-      }/>
-      { work.html && <div className="html-content" dangerouslySetInnerHTML={{__html: work.html}}></div>}
-      { work.images && (
-        <div className="work-images">
-        {
-          work.images.map((i, k)=>{
-            return <File file={i} key={k} method={methodTypes.view}/>
-          })}
+      <ReactCSSTransitionGroup
+        transitionName="fade"
+        transitionAppear={true}
+        transitionEnterTimeout={1000}
+        transitionAppearTimeout={1000}
+        transitionLeaveTimeout={1000}>
+        
+        <div className="work-page">
+        <Helmet>
+        <title>{work.title}</title>
+        <meta name="description" content="Description of Work" />
+        </Helmet>
+        <div className="work-head">
+        <h1>{work.title}</h1>
+        { work.link && <div className="link"><a href={work.link} target="_blank"><i className="material-icons">link</i> {work.link}</a></div> }
         </div>
-      )}
-    
-    {
-      user && editing &&
-      <form onSubmit={(e)=>this.handleSubmit(e)}>
+        <InfoList list={
+          Object.keys(articleProperties).map(key=>({
+            label:articleProperties[key].label,
+            value:work[articleProperties[key].id]
+          }))
+        }/>
+        { work.html && <div className="html-content" dangerouslySetInnerHTML={{__html: work.html}}></div>}
+        { work.images && (
+          <div className="work-images">
+          {
+            work.images.map((i, k)=>{
+              return <File file={i} key={k} method={methodTypes.view}/>
+            })}
+          </div>
+        )}
+      
       {
-        Object.keys(visibleProperties).map(key=>{
-          let prop = visibleProperties[key];
-          const Editing = registry.load(baseKey+(prop.type || 'input'));
-          return (
-            <div key={key} className="form-group row">
-              <label htmlFor={prop.label} className="col-sm-4 col-form-label">{prop.label}</label>
-              <div className="col-sm-8">
-                <Editing
-                  label={prop.label}
-                  value={editing[prop.id]}
-                  onChange={val=>this.updateState(prop.id, val)}
-                  addFile={file=>this.addFile(file, prop.id)}
-                  coordinates={[editing.key, prop.id]} />
+        user && editing &&
+        <form onSubmit={(e)=>this.handleSubmit(e)}>
+        {
+          Object.keys(visibleProperties).map(key=>{
+            let prop = visibleProperties[key];
+            const Editing = registry.load(baseKey+(prop.type || 'input'));
+            return (
+              <div key={key} className="form-group row">
+                <label htmlFor={prop.label} className="col-sm-4 col-form-label">{prop.label}</label>
+                <div className="col-sm-8">
+                  <Editing
+                    label={prop.label}
+                    value={editing[prop.id]}
+                    onChange={val=>this.updateState(prop.id, val)}
+                    addFile={file=>this.addFile(file, prop.id)}
+                    coordinates={[editing.key, prop.id]} />
+                </div>
               </div>
-            </div>
-            )
-        })
+              )
+          })
+        }
+        <button disabled={!this.isDirty()} type="submit" className="btn btn-primary">Save</button>
+        </form>
       }
-      <button disabled={!this.isDirty()} type="submit" className="btn btn-primary">Save</button>
-      </form>
-    }
-    </div>
+      </div>
+    </ReactCSSTransitionGroup>
     );
   }
 }

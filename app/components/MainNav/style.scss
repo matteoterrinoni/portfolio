@@ -15,6 +15,10 @@ $aColor: #b5b5b5;
   padding-bottom: 40px;
   min-width: 192px;
 
+  & > span{
+    display: block;
+  }
+
   &:after{
     content: "";
     position: absolute;
