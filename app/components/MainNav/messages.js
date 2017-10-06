@@ -18,8 +18,8 @@ export default defineMessages({
     id: 'app.components.MainNav.works',
     defaultMessage: 'Works',
   },
-  photos: {
-    id: 'app.components.MainNav.photos',
-    defaultMessage: 'Photos',
+  skills: {
+    id: 'app.components.MainNav.skills',
+    defaultMessage: 'Skills',
   },
 });

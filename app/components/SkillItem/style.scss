@@ -1,0 +1,68 @@
+@import '../../variables';
+
+.skill-grid-item{
+	width: 250px;
+	transition: opacity ease-in-out 0.2s, transform ease-in-out 0.5s;
+
+	&:after{
+		content: "";
+		display: block;
+		height: 100%;
+		width: 100%;
+		top: 10px;
+		left: 10px;
+		position: absolute;
+		z-index: -1;
+		border: 1px dashed #554fd9;
+		transition: transform ease-in .1s;
+	}
+
+	&:not([data-packed]){
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	&[data-packed]{
+		opacity: 1;
+		transform: translateY(0px);
+	}
+
+	@for $i from 1 through 10 {
+		&:nth-child(#{$i}) {
+			transition-delay: #{$i * .05}s;
+		}
+	}
+
+	.grid-item-wrapper{
+		display: block;
+		text-decoration: none !important;
+		background: $darkBackground;
+		position: relative;
+		z-index: 1;
+		padding: 20px;
+		transition: transform ease-in .1s;
+	}
+
+	&:hover{
+		.grid-item-wrapper{
+			transform: translate(-5px,-5px);
+			transition: transform ease-out .05s;
+		}
+		&:after{
+			transform: translate(2px,2px);
+			transition: transform ease-out .05s;
+		}	
+	}
+}
+
+@media screen and (min-width: 720px) and (max-width: 871px) {
+	.work-grid-item{
+		width: 200px;
+	}
+}
+
+@media screen and (min-width: 720px) and (max-width: 1115px) {
+	.work-grid-item{
+		width: 200px;
+	}
+}

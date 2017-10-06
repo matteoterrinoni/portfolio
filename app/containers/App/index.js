@@ -18,7 +18,7 @@
  import { createStructuredSelector } from 'reselect';
 
  import HomePage from 'containers/HomePage/Loadable'
- import Photos from 'containers/Photos/Loadable'
+ import Skills from 'containers/Skills/Loadable'
  import Works from 'containers/Works/Loadable'
  import Login from 'containers/Login/Loadable'
  import NotFoundPage from 'containers/NotFoundPage/Loadable'
@@ -59,7 +59,7 @@
 				 				<Switch>
 					 				<Route exact path='/' component={Works} />
 					 				<Route path={sections.works.path} component={Works} />
-					 				<Route exact path={sections.photos.path} component={Photos} />
+					 				<Route path={sections.skills.path} component={Skills} />
 					 				<Route exact path={'/admin'} component={Login} />
 					 				<Route component={NotFoundPage} />
 				 				</Switch>

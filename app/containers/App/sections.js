@@ -8,12 +8,12 @@ export const sections = {
 			strict: false,
 		}
 	},
-	photos: {
-		path: "/photos",
-		title: "Photos",
+	skills: {
+		path: "/skills",
+		title: "Skills",
 		matchPath: {
-			path: '/photos',
-			exact: true,
+			path: '/skills',
+			exact: false,
 			strict: false,
 		}
 	}

@@ -1,0 +1,24 @@
+.skill-page{
+
+	form{
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	.menu--tsula{
+		padding-bottom: 50px;
+	}
+
+	.image.view{
+		padding-bottom: 20px;
+	}
+}
+.skill-head{
+	margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+	.skill-page {
+		padding-right: 30px;
+	}
+}

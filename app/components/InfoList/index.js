@@ -18,10 +18,15 @@ class InfoList extends React.PureComponent { // eslint-disable-line react/prefer
     		list.map(l=>{
 				let label = l.label;
 				let val = l.value;
-				return !val ? null : (
+				return (!val || val.length == 0) ? null : (
 					<span key={label} className="menu__item">
 						<span className="menu__item-name">{label}</span>
-						<span className="menu__item-label">{val}</span>
+						<span className="menu__item-label">{
+							val.constructor !== Array ? val :
+							val.map(v=>{
+								return <span key={v} className="badge badge-pill badge-primary">{v}</span>
+							})
+						}</span>
 					</span>
 				)
 			})
