@@ -45,8 +45,8 @@
 	 	return (
 	 		<div className={`sidemenu-${sidemenu?'open':'closed'}`}>
 		 		<Helmet
-		 		titleTemplate="%s - React.js Boilerplate"
-		 		defaultTitle="React.js Boilerplate">
+		 		titleTemplate="%s - Matteo's porfolio"
+		 		defaultTitle="Matteo's porfolio">
 		 		<meta name="description" content="A React.js Boilerplate application" />
 		 		</Helmet>
 		 		<MorphBackground />

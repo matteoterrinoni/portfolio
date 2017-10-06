@@ -10,6 +10,8 @@ import { compose } from 'redux';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
+import Octicon from 'components/Octicon'
+
 import './style.scss';
 
 class SideMenu extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -36,6 +38,11 @@ class SideMenu extends React.Component { // eslint-disable-line react/prefer-sta
           		<FormattedMessage {...messages.name} /> <FormattedMessage {...messages.surname} />
           	</h1>
           	<p><FormattedMessage {...messages.subtitle} /></p>
+            <div className="social">
+              <a href="https://github.com/matteoterrinoni" target="_blank">
+                <Octicon name="mark-github" />
+              </a>
+            </div>
           </div>
         </aside>
       </div>
