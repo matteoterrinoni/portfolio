@@ -21,10 +21,12 @@ class GridItems extends React.Component { // eslint-disable-line react/prefer-st
 				sizes={
 					[ 
 						{
-							columns: 2,
+							columns: 1,
 							gutter: 20
 						},
-						{ mq: '768px', columns: 1, gutter: 20 },
+						{ mq: '540px', columns: 1, gutter: 20},
+						{ mq: '720px', columns: 2, gutter: 20 },
+						{ mq: '870px', columns: 2, gutter: 20 },
 						{ mq: '1115px', columns: 2, gutter: 20 }
 					]}
 				>

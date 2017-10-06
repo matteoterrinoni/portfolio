@@ -14,17 +14,22 @@ import { fromJS } from 'immutable';
 import {merge, indexBy, prop} from 'ramda';
 
 import {
-  DEFAULT_LOCALE
+  DEFAULT_LOCALE,
+  TOGGLE_SIDEMENU
 } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
   loading: false,
-  error: false
+  error: false,
+  sidemenu: false
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+  	case TOGGLE_SIDEMENU:
+  		return state.
+  		set('sidemenu', !state.get('sidemenu'))
     default:
       return state;
   }

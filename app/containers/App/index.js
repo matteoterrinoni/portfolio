@@ -12,8 +12,10 @@
  */
 
  import React from 'react'
+ import { connect } from 'react-redux'
  import { Switch, Route } from 'react-router-dom'
  import { Helmet } from 'react-helmet'
+ import { createStructuredSelector } from 'reselect';
 
  import HomePage from 'containers/HomePage/Loadable'
  import Photos from 'containers/Photos/Loadable'
@@ -27,41 +29,52 @@
  import saga from 'containers/File/saga'
  import { compose } from 'redux';
  import injectSaga from 'utils/injectSaga';
+ import { makeSelectSidemenu } from './selectors';
  
  import './style.scss';
 
- const App = () => {
- 	return (
- 		<div>
-	 		<Helmet
-	 		titleTemplate="%s - React.js Boilerplate"
-	 		defaultTitle="React.js Boilerplate">
-	 		<meta name="description" content="A React.js Boilerplate application" />
-	 		</Helmet>
-	 		<MorphBackground />
-	 		<div className="container-fluid">
-		 		<div className="row justify-content-end">
-		 			<SideMenu />
-		 			<div className="col-6 main-content">
-		 				<MainNav />
-		 				<article>
-					 		<Switch>
-						 		<Route exact path="/" component={Works} />
-						 		<Route path={sections.works.path} component={Works} />
-						 		<Route exact path={sections.photos.path} component={Photos} />
-						 		<Route exact path={'/admin'} component={Login} />
-						 		<Route component={NotFoundPage} />
-					 		</Switch>
-				 		</article>
+ class App extends React.Component {
+ 		constructor(props) {
+ 			super(props);
+ 			this.state = {
+ 				sidemenu: false
+ 			}
+ 		}
+ 		render(){
+		const { sidemenu } = this.state;
+	 	return (
+	 		<div className={`sidemenu-${sidemenu?'open':'closed'}`}>
+		 		<Helmet
+		 		titleTemplate="%s - React.js Boilerplate"
+		 		defaultTitle="React.js Boilerplate">
+		 		<meta name="description" content="A React.js Boilerplate application" />
+		 		</Helmet>
+		 		<MorphBackground />
+		 		<div className="container-fluid">
+			 		<div className="row justify-content-end">
+			 			<SideMenu onToggleSidemenu={()=>this.setState({sidemenu: !sidemenu})}/>
+			 			<div className="col-xs-12 col-sm-12 col-md-8 col-lg-7 col-xl-6 main-content">
+			 				<MainNav/>
+			 				<article>
+						 		<Switch>
+							 		<Route exact path="/" component={Works} />
+							 		<Route path={sections.works.path} component={Works} />
+							 		<Route exact path={sections.photos.path} component={Photos} />
+							 		<Route exact path={'/admin'} component={Login} />
+							 		<Route component={NotFoundPage} />
+						 		</Switch>
+					 		</article>
+				 		</div>
 			 		</div>
 		 		</div>
 	 		</div>
- 		</div>
- 		);
+	 		);
+	 }
  }
 
 const withSaga = injectSaga({ key: 'file', saga });
 
+
 export default compose(
-  withSaga,
+  	withSaga
 )(App);

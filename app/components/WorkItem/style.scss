@@ -53,5 +53,16 @@
 			transition: transform ease-out .05s;
 		}	
 	}
+}
 
+@media screen and (min-width: 720px) and (max-width: 871px) {
+	.work-grid-item{
+		width: 200px;
+	}
+}
+
+@media screen and (min-width: 720px) and (max-width: 1115px) {
+	.work-grid-item{
+		width: 200px;
+	}
 }

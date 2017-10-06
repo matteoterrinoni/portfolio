@@ -1,7 +1,7 @@
 .scene {
-	left:-90vw;
-	position: fixed;
-	width: 200vw;
+	left: -950px;
+    position: fixed;
+    width: 2020px;
 	height: 300vh;
 	top: -100vh;
 
@@ -34,6 +34,41 @@
 
 	path {
 		fill: #1c1d21;
+		box-shadow: 0 0 2px 20px red;
+	}
+}
+
+.morph-background{
+	transition: transform ease-in-out .2s .15s;
+	transform: translateX(-120vw);
+	position: fixed;
+	z-index: 3;
+	pointer-events:none;
+}
+
+.sidemenu-closed{
+	.morph-background{
+		transform: translateX(-120vw);
+	}
+}
+
+.sidemenu-open{
+	.morph-background{
+		transform: translateX(0);
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.morph-background,
+	.sidemenu-open .morph-background,
+	.sidemenu-closed .morph-background{
+		transform: translateX(0%);
+		z-index: 0;
+
+		.scene{
+			left:-90vw;
+			width: 200vw;
+		}
 	}
 }
 

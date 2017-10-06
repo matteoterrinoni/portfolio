@@ -8,13 +8,31 @@ $aColor: #b5b5b5;
 .menu.main-nav{
   position: fixed;
   right: 0;
-  width: 50%;
   padding-right: 15px;
   top: 0px;
   padding-top: 15px;
   z-index: 1;
   padding-bottom: 40px;
-  background: linear-gradient(to bottom, rgba(34,35,41,1) 0%,rgba(34,35,41,1) 49%,rgba(34,35,41,0) 90%,rgba(34,35,41,0) 100%); 
+  min-width: 192px;
+
+  &:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60vw;
+    height: 23px;
+    background: #222329;
+    box-shadow: 0 0 100px 112px #222329;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  & > *{
+    position: relative;
+    z-index: 2;
+  }
+  
 }
 
 .menu {
@@ -128,31 +146,42 @@ $aColor: #b5b5b5;
   }
 }
 
-@media screen and (max-width: 55em) {
-  .menu--alonso {
-    .menu__line {
-      top: 3em;
+
+@media screen and (max-width: 768px) {
+  .menu.main-nav{
+    width: calc(100% - 70px);
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .menu.main-nav{
+    width: calc(100% - 70px);
+    &:after{
+      width: 100vw;
     }
-    .menu__item {
-      &:nth-child(1).menu__item--current ~ .menu__line {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-      }
-      &:nth-child(2).menu__item--current ~ .menu__line {
-        -webkit-transform: translate3d(0, 3em, 0);
-        transform: translate3d(0, 3em, 0);
-      }
-      &:nth-child(3).menu__item--current ~ .menu__line {
-        -webkit-transform: translate3d(0, 6em, 0);
-        transform: translate3d(0, 6em, 0);
-      }
-      &:nth-child(4).menu__item--current ~ .menu__line {
-        -webkit-transform: translate3d(0, 9em, 0);
-        transform: translate3d(0, 9em, 0);
-      }
-      &:nth-child(5).menu__item--current ~ .menu__line {
-        -webkit-transform: translate3d(0, 12em, 0);
-        transform: translate3d(0, 12em, 0);
+  }
+  .menu--alonso {
+    .menu__link {
+      width: 70px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .menu__line {
+      width: 70px;
+      border-width: 0 25px;
+    }
+
+    .menu__item{
+
+      &.back{
+
+        .menu__link {
+          width: 40px;
+        }
+        span{
+          display: none;
+        }
       }
     }
   }

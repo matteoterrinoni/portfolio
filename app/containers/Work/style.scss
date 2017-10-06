@@ -1,5 +1,4 @@
 .work-page{
-	padding-right: 30px;
 
 	form{
 		padding-top: 50px;
@@ -16,4 +15,10 @@
 }
 .work-head{
 	margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+	.work-page {
+		padding-right: 30px;
+	}
 }

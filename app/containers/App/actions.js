@@ -15,3 +15,12 @@
  *    }
  */
 
+import {
+	TOGGLE_SIDEMENU
+} from './constants';
+
+export function toggleSidemenu() {
+	return {
+		type: TOGGLE_SIDEMENU
+	};
+}

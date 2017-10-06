@@ -24,7 +24,7 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 		const { match, location, history } = this.props;
 
 		return (
-			<nav className="menu menu--alonso main-nav">
+			<nav className="menu menu--alonso main-nav col-xs-12 col-sm-12 col-md-8 col-lg-7 col-xl-6">
 				{
 					Object.keys(sections).map(s=>{
 							let section = sections[s];

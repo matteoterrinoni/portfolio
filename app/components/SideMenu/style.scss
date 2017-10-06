@@ -35,3 +35,109 @@ aside{
 		}
 	}
 }
+
+.side-menu{
+	&:after{
+		content: "";
+		background: rgba(0,0,0,0.7);
+		opacity: 0;
+		pointer-events: none;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		z-index: 2;
+		transition: opacity ease-in-out .2s .1s;
+	}
+}
+
+.side-menu-toggle{
+	position: fixed;
+	top: 15px;
+	left: 25px;
+	z-index: 4;
+	outline: 0;
+	user-select: none;
+
+	transition: transform ease-in-out .1s .1s;
+	transform: translateX(0);
+
+	span{
+		position: relative;
+		z-index: 2;
+		font-size: 28pt;
+	}
+
+	.name{
+		top: -5px;
+		&:after{
+			content: "";
+			display: block;
+			height: 50%;
+			position: absolute;
+			z-index: -1;
+			width: 40px;
+			height: 40px;
+			background: $contrastColor;
+			top: 15px;
+			left: 4px;
+			transition: transform ease-in-out .2s .1s;
+			transform: rotate(0);
+		}
+	}
+
+	.surname{
+		top: 2px;
+		left: -14px;
+	}
+}
+
+.sidemenu-open{
+	.side-menu-toggle{
+		.name{
+			&:after{
+				transform: rotate(45deg);
+			}
+		}
+	}
+
+	.side-menu{
+		&:after{
+			opacity: 1;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.side-menu-toggle{
+		transform: translateX(-100px);
+	}
+}
+
+aside{
+	transition: transform ease-in-out .2s .1s;
+	transform: translateX(-100vw);
+	z-index: 3;
+}
+
+.sidemenu-open{
+	aside{
+		transform: translateX(0vw);
+	}
+}
+
+.sidemenu-closed{
+	aside{
+		transform: translateX(-100vw);
+	}
+}
+
+@media screen and (min-width: 768px) {
+	aside,
+	.sidemenu-closed aside,
+	.sidemenu-open aside{
+		transform: translateX(0%);
+		z-index: 0;
+	}
+}

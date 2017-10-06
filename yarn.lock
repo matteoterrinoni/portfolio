@@ -6028,6 +6028,12 @@ object.values@^1.0.3:
     function-bind "^1.1.0"
     has "^1.0.1"
 
+octicons@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/octicons/-/octicons-6.0.1.tgz#481f4947780c495e42eef113e5b764075e226b84"
+  dependencies:
+    object-assign "^4.1.1"
+
 offline-plugin@4.8.1:
   version "4.8.1"
   resolved "https://registry.yarnpkg.com/offline-plugin/-/offline-plugin-4.8.1.tgz#1d73457081185777179c29d9d416f71077a0197a"

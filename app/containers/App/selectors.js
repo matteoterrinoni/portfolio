@@ -19,8 +19,14 @@ const makeSelectError = () => createSelector(
   (globalState) => globalState.get('error')
 );
 
+const makeSelectSidemenu = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('sidemenu')
+);
+
 export {
   makeSelectLocation,
   makeSelectLoading,
-  makeSelectError
+  makeSelectError,
+  makeSelectSidemenu
 };
