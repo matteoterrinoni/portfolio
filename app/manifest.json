@@ -1,7 +1,7 @@
 {
   "name": "react boilerplate",
-  "theme_color": "#b1624d",
-  "background_color": "#fafafa",
+  "theme_color": "#222328",
+  "background_color": "#222328",
   "display": "standalone",
   "Scope": "/",
   "start_url": "/",

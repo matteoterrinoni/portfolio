@@ -40,7 +40,7 @@
 
 .morph-background{
 	transition: transform ease-in-out .2s .15s;
-	transform: translateX(-125vw);
+	transform: translateX(-140vw);
 	position: fixed;
 	z-index: 3;
 	pointer-events:none;
@@ -48,7 +48,7 @@
 
 .sidemenu-closed{
 	.morph-background{
-		transform: translateX(-125vw);
+		transform: translateX(-140vw);
 	}
 }
 
