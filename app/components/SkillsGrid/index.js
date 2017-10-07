@@ -16,10 +16,18 @@ import './style.scss'
 
 class SkillsGrid extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 	render() {
-		const { skills, onAddSkill } = this.props;
+		const { skills, onAddSkill, user } = this.props;
 		return !skills ? null : (
 				<div className="skills-grid">
-					<button type="button" className="add-button btn btn-primary btn-sm" onClick={onAddSkill}>Add new Skill <i className="material-icons">add</i></button>
+					{ 
+						user &&
+						<button
+						type="button"
+						className="add-button btn btn-primary btn-sm"
+						onClick={onAddSkill}>
+							Add new Skill <i className="material-icons">add</i>
+						</button>
+					}
 					<GridItems>
 					{
 						skillsToSortedArray(skills).map((skill)=>{

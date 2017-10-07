@@ -4,6 +4,17 @@
 	width: 250px;
 	transition: opacity ease-in-out 0.2s, transform ease-in-out 0.5s;
 
+	a{
+		h3{
+			color: $white;
+		}
+		&:hover{
+			h3{
+				color: $white;
+			}	
+		}
+	}
+
 	&:after{
 		content: "";
 		display: block;
@@ -27,7 +38,7 @@
 		transform: translateY(0px);
 	}
 
-	@for $i from 1 through 10 {
+	@for $i from 1 through 20 {
 		&:nth-child(#{$i}) {
 			transition-delay: #{$i * .05}s;
 		}

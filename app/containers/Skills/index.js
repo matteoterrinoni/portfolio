@@ -16,6 +16,7 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeSelectSkills, makeSelectLocation } from './selectors';
+import { makeSelectUser } from 'containers/Login/selectors'
 import reducer from './reducer';
 import saga from './saga';
 import fileSaga from 'containers/File/saga';
@@ -40,10 +41,11 @@ export class Skills extends React.PureComponent { // eslint-disable-line react/p
   }
 
   render() {
-    const { skills, match } = this.props;
+    const { skills, match, user } = this.props;
     const skillsGridProps = {
       skills,
-      onAddSkill:()=>this.onAddSkill()
+      onAddSkill:()=>this.onAddSkill(),
+      user,
     }
 
     return (
@@ -72,6 +74,7 @@ Skills.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   skills: makeSelectSkills(),
+  user: makeSelectUser()
 });
 
 function mapDispatchToProps(dispatch) {
