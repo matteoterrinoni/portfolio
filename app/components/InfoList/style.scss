@@ -15,7 +15,7 @@
 	}
 	.menu__item {
 		&:hover .menu__item-name, &:focus .menu__item-name {
-			color: #222328;
+			color: $background;
 			background: $contrastColor;
 		}
 		&::before {
@@ -32,12 +32,21 @@
 	}
 	.menu__item-label {
 		margin: 0;
-		color: #999caa;
+		color: $white;
 	}
 	.menu__item {
 		&:hover::before, &:focus::before {
 			animation: blinkblink 0.4s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
 		}
+	}
+
+	.badge{
+		margin-right: 4px;
+		margin-bottom: 4px;
+		margin-top: 0px;
+		vertical-align: middle;
+		position: relative;
+		display: inline-block;
 	}
 }
 
