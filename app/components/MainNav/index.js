@@ -22,6 +22,17 @@ import { sections } from 'containers/App/sections';
 
 class MainNav extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
+	matchPath(sectionMatches) {
+		const { location } = this.props;
+		let i = 0;
+		let match = false
+		while(i<sectionMatches.length && !match){
+			match = matchPath(location.pathname, sectionMatches[i])
+			i++
+		}
+		return match
+	}
+
 	render() {
 		const { match, location, history } = this.props;
 
@@ -60,7 +71,7 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 						Object.keys(sections).map(s=>{
 							let section = sections[s];
 							return (
-								<li key={s} className={`menu__item ${ matchPath(location.pathname, section.matchPath)?'menu__item--current':''}`}>
+								<li key={s} className={`menu__item ${ this.matchPath(section.matchPath)?'menu__item--current':''}`}>
 									<Link className="menu__link" to={{
 										pathname: section.path
 										}}><FormattedMessage {...messages[s]} />
