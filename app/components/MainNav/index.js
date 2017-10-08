@@ -47,10 +47,11 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 					{
 						Object.keys(sections).map(s=>{
 								let section = sections[s];
-								const newPath = merge(section.matchPath, {
+								const newPath = {
 										exact:true,
-										path: section.matchPath.path+'/:id'
-									});
+										path: section.path+'/:id',
+										strict: false,
+									};
 								const match = matchPath(location.pathname, newPath);
 
 								return !match ? null :
