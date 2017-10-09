@@ -5,7 +5,6 @@
 */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import MasonryLayout from 'react-masonry-layout'
 // import styled from 'styled-components';
 import './style.scss';
@@ -13,9 +12,9 @@ import './style.scss';
 class GridItems extends React.Component { // eslint-disable-line react/prefer-stateless-function
 	render() {
 		const {children} = this.props;
-		return (!children || children.length == 0) ? null:(
+		return (!children || children.length === 0) ? null : (
 			<MasonryLayout
-				id="items"
+				id='items'
 				infiniteScrollDisabled={true}
 				infiniteScroll={()=>false}
 				sizes={

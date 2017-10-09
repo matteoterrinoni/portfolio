@@ -9,18 +9,15 @@ import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makeSelectSkills, makeSelectLocation } from './selectors';
+import { makeSelectSkills } from './selectors';
 import { makeSelectUser } from 'containers/Login/selectors'
 import reducer from './reducer';
 import saga from './saga';
-import fileSaga from 'containers/File/saga';
-import messages from './messages';
 import { loadSkills, addSkill } from './actions';
 
 import SkillsGrid from 'components/SkillsGrid';
@@ -41,7 +38,7 @@ export class Skills extends React.PureComponent { // eslint-disable-line react/p
   }
 
   render() {
-    const { skills, match, user } = this.props;
+    const { skills, user } = this.props;
     const skillsGridProps = {
       skills,
       onAddSkill:()=>this.onAddSkill(),
@@ -79,7 +76,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadSkills: (e)=>dispatch(loadSkills()),
+    loadSkills: ()=>dispatch(loadSkills()),
     addSkill: (skill)=>dispatch(addSkill(skill))
   };
 }
@@ -87,7 +84,6 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'skills', reducer });
 const withSaga = injectSaga({ key: 'skills', saga });
-const withFileSaga = injectSaga({ key: 'file', fileSaga });
 
 export default compose(
   withReducer,

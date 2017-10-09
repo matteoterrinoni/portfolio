@@ -28,7 +28,7 @@ import {
 import { merge } from 'ramda'
 import { workStatuses } from './model'
 
-const initialState = fromJS({
+export const initialState = fromJS({
 	loading: false,
 	error: false,
 	works: false
@@ -96,15 +96,15 @@ function worksReducer(state = initialState, action) {
 				.updateIn(_coordinates, list => {
 					return list.push(action.info.path)
 				})
-		} else {
-			let obj = {};
-			obj[_coordinates[_coordinates.length-1]] = [action.info.path];
-			let __coordinates = _coordinates.slice(0, -1);
-			const newObj = fromJS(obj);
-			return state
-				.mergeIn(__coordinates, newObj)
-				.set('loading', false)
 		}
+		let obj = {};
+		obj[_coordinates[_coordinates.length-1]] = [action.info.path];
+		let __coordinates = _coordinates.slice(0, -1);
+		const newObj = fromJS(obj);
+		return state
+			.mergeIn(__coordinates, newObj)
+			.set('loading', false)
+		
 	case ADD_FILE_TO_WORK_ERROR:
 		return state
 			.set('loading', false)

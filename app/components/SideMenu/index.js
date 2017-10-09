@@ -5,8 +5,6 @@
 */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -28,19 +26,21 @@ class SideMenu extends React.Component { // eslint-disable-line react/prefer-sta
 
   render() {
     return (
-      <div className="side-menu">
-        <a className="side-menu-toggle" onClick={this.onClick}>
-          <span className="name">{messages.name.defaultMessage[0]}</span> <span className="surname">{messages.surname.defaultMessage[0]}</span>
+      <div className='side-menu'>
+        <a className='side-menu-toggle' onClick={this.onClick}>
+          <span className='name'>
+          {messages.name.defaultMessage[0]}
+          </span> <span className='surname'>{messages.surname.defaultMessage[0]}</span>
         </a>
         <aside>
-        	<div className="content">
+        	<div className='content'>
           	<h1>
           		<FormattedMessage {...messages.name} /> <FormattedMessage {...messages.surname} />
           	</h1>
           	<p><FormattedMessage {...messages.subtitle} /></p>
-            <div className="social">
-              <a href="https://github.com/matteoterrinoni" target="_blank">
-                <Octicon name="mark-github" />
+            <div className='social'>
+              <a href='https://github.com/matteoterrinoni' target='_blank'>
+                <Octicon name='mark-github' />
               </a>
             </div>
           </div>

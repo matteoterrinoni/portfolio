@@ -12,7 +12,8 @@ import './style.scss';
 // import styled from 'styled-components';
 
 
-class MultipleInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class MultipleInput extends React.PureComponent {
+// eslint-disable-line react/prefer-stateless-function
 	static key= `${baseKey}multipleinput`;
 
 	constructor(props) {
@@ -50,24 +51,30 @@ class MultipleInput extends React.PureComponent { // eslint-disable-line react/p
 	}
 
 	render() {
-		const { label, value, onChange } = this.props;
+		const { label, value } = this.props;
 		const { newVal } = this.state;
 
 		return (
-			<div className="input-list">
+			<div className='input-list'>
 				{
 					value && value.map((v, vi)=>{
 						return (
-							<div className="input-list-item">
+							<div className='input-list-item'>
 								<Input label={`${label}-${vi}`} value={v} onChange={val=>this.onChange(vi, val)} />
-								<button onClick={(e)=>this.onRemove(e, vi)} type="button" className="btn btn-sm btn-primary"><i className="material-icons">close</i></button>
+								<button onClick={(e)=>this.onRemove(e, vi)}
+								type='button'
+								className='btn btn-sm btn-primary'>
+								<i className='material-icons'>close</i></button>
 							</div>
 						)
 					})
 				}
-				<div className="input-list-item">
-					<Input label={`${label}-new`} value={newVal} onChange={val=>this.setState({newVal:val})} />
-					<button onClick={(e)=>this.onAdd(e)} type="button" className="btn btn-sm btn-success"><i className="material-icons">add</i></button>
+				<div className='input-list-item'>
+					<Input label={`${label}-new`} value={newVal}
+					onChange={val=>this.setState({newVal:val})} />
+					<button onClick={(e)=>this.onAdd(e)}
+					type='button' className='btn btn-sm btn-success'>
+					<i className='material-icons'>add</i></button>
 				</div>
 			</div>
 		);

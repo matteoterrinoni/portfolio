@@ -7,7 +7,7 @@ export class Registry {
 		this.registry = {};
 		renderers.forEach( (renderer) => {
 				const key = renderer.key;
-
+				
 				if (!key)
 					throw Error("not a renderer: "+renderer)
 

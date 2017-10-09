@@ -11,7 +11,6 @@ import {Link} from 'react-router-dom';
 import { matchPath } from 'react-router';
 import { withRouter } from 'react-router'
 import { FormattedMessage } from 'react-intl';
-import {merge} from 'ramda'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
@@ -26,20 +25,20 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 		const { location } = this.props;
 		let i = 0;
 		let match = false
-		while(i<sectionMatches.length && !match){
+		while (i < sectionMatches.length && !match) {
 			match = matchPath(location.pathname, sectionMatches[i])
-			i++
+			i += 1
 		}
 		return match
 	}
 
 	render() {
-		const { match, location, history } = this.props;
+		const { location } = this.props;
 
 		return (
-			<nav className="menu menu--alonso main-nav col-xs-12 col-sm-12 col-md-8 col-lg-7 col-xl-6">
+			<nav className='menu menu--alonso main-nav col-xs-12 col-sm-12 col-md-8 col-lg-7 col-xl-6'>
 				<ReactCSSTransitionGroup
-					transitionName="fade-left"
+					transitionName='fade-left'
 					transitionAppear={true}
 					transitionEnterTimeout={1000}
 					transitionAppearTimeout={1000}
@@ -49,17 +48,20 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 								let section = sections[s];
 								const newPath = {
 										exact:true,
-										path: section.path+'/:id',
-										strict: false,
+										path: section.path + '/:id',
+										strict: false
 									};
 								const match = matchPath(location.pathname, newPath);
 
 								return !match ? null :
 								(
 									<li key={s} className={`menu__item back`}>
-										<Link className="menu__link" to={{
+										<Link className='menu__link' to={{
 											pathname: section.path
-											}}><i className="material-icons">arrow_back</i> <FormattedMessage {...messages.back} />
+											}}>
+											<i className='material-icons'>
+												arrow_back
+											</i> <FormattedMessage {...messages.back} />
 										</Link>
 									</li>
 								)	
@@ -67,13 +69,18 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 					}
 				</ReactCSSTransitionGroup>
 
-				<ul className="menu__list">
+				<ul className='menu__list'>
 					{
 						Object.keys(sections).map(s=>{
 							let section = sections[s];
 							return (
-								<li key={s} className={`menu__item ${ this.matchPath(section.matchPath)?'menu__item--current':''}`}>
-									<Link className="menu__link" to={{
+								<li key={s}
+									className={
+										`menu__item ${ this.matchPath(section.matchPath)
+											? 'menu__item--current' : ''}`
+
+								}>
+									<Link className='menu__link' to={{
 										pathname: section.path
 										}}><FormattedMessage {...messages[s]} />
 									</Link>
@@ -81,7 +88,7 @@ class MainNav extends React.Component { // eslint-disable-line react/prefer-stat
 							)	
 						})
 					}
-					<li className="menu__line"></li>
+					<li className='menu__line'/>
 				</ul>
 			</nav>
 			);

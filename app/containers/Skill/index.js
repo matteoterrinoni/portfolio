@@ -8,20 +8,16 @@
  import PropTypes from 'prop-types';
  import { connect } from 'react-redux';
  import { Helmet } from 'react-helmet';
- import { FormattedMessage } from 'react-intl';
  import { createStructuredSelector } from 'reselect';
  import { compose } from 'redux';
 
  import { makeSelectSkill } from 'containers/Skills/selectors'
  import { makeSelectUser } from 'containers/Login/selectors'
  import { loadSkill, patchSkill, skillEdited } from 'containers/Skills/actions'
- import messages from './messages'
- import { fromJS, Map } from 'immutable'
  import { visibleProperties } from 'containers/Skills/model';
  import registry from 'utils/registry/registry';
  import { baseKey } from 'components/Editing/model';
  import { skillStatuses, articleProperties } from 'containers/Skills/model';
- import { clone } from 'ramda';
  import File from 'containers/File/Loadable'
  import { methodTypes } from 'containers/File/model'
  import InfoList from 'components/InfoList'
@@ -29,8 +25,6 @@
 
 
  import './style.scss';
-
- const path = "http://matteoterrinoni.it/"
 
 export class Skill extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -68,7 +62,7 @@ export class Skill extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
-    const { skill, match, user } = this.props;
+    const { skill, user } = this.props;
     const editing = skill;
     return !skill?null:(
       <ReactCSSTransitionGroup
@@ -93,7 +87,7 @@ export class Skill extends React.PureComponent { // eslint-disable-line react/pr
             value:skill[articleProperties[key].id]
           }))
         }/>
-        { skill.html && <div className="html-content" dangerouslySetInnerHTML={{__html: skill.html}}></div>}
+        { skill.html && <div className="html-content" dangerouslySetInnerHTML={{__html: skill.html}}/>}
         { skill.images && (
           <div className="skill-images">
           {

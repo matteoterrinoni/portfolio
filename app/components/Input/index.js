@@ -17,8 +17,8 @@ class Input extends React.PureComponent { // eslint-disable-line react/prefer-st
 
 		return (
 			<input
-				type="text"
-				className="form-control"
+				type='text'
+				className='form-control'
 				id={label}
 				placeholder={label}
 				value={value || ''}

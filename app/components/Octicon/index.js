@@ -12,7 +12,8 @@ class Octicon extends React.Component { // eslint-disable-line react/prefer-stat
   render() {
   	const {name} = this.props;
     return !name ? null : (
-      <span className={`octicon-wrapper ${name}`} dangerouslySetInnerHTML={{__html: octicons[name].toSVG()}} />
+      <span className={`octicon-wrapper ${name}`}
+      dangerouslySetInnerHTML={{__html: octicons[name].toSVG()}} />
     );
   }
 }

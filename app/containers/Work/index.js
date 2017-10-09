@@ -8,20 +8,16 @@
  import PropTypes from 'prop-types';
  import { connect } from 'react-redux';
  import { Helmet } from 'react-helmet';
- import { FormattedMessage } from 'react-intl';
  import { createStructuredSelector } from 'reselect';
  import { compose } from 'redux';
 
  import { makeSelectWork } from 'containers/Works/selectors'
  import { makeSelectUser } from 'containers/Login/selectors'
  import { loadWork, patchWork, workEdited, addFileToWork } from 'containers/Works/actions'
- import messages from './messages'
- import { fromJS, Map } from 'immutable'
  import { visibleProperties } from 'containers/Works/model';
  import registry from 'utils/registry/registry';
  import { baseKey } from 'components/Editing/model';
  import { workStatuses, articleProperties } from 'containers/Works/model';
- import { clone } from 'ramda';
  import File from 'containers/File/Loadable'
  import { methodTypes } from 'containers/File/model'
  import InfoList from 'components/InfoList'
@@ -29,8 +25,6 @@
 
 
  import './style.scss';
-
- const path = "http://matteoterrinoni.it/"
 
 export class Work extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -73,7 +67,7 @@ export class Work extends React.PureComponent { // eslint-disable-line react/pre
   }
 
   render() {
-    const { work, match, user } = this.props;
+    const { work, user } = this.props;
     const editing = work;
     return !work?null:(
       <ReactCSSTransitionGroup
@@ -98,7 +92,7 @@ export class Work extends React.PureComponent { // eslint-disable-line react/pre
             value:work[articleProperties[key].id]
           }))
         }/>
-        { work.html && <div className="html-content" dangerouslySetInnerHTML={{__html: work.html}}></div>}
+        { work.html && <div className="html-content" dangerouslySetInnerHTML={{__html: work.html}}/>}
         { work.images && (
           <div className="work-images">
           {

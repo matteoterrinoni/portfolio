@@ -9,17 +9,14 @@ import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makeSelectWorks, makeSelectLocation } from './selectors';
+import { makeSelectWorks } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import fileSaga from 'containers/File/saga';
-import messages from './messages';
 import { loadWorks } from './actions';
 
 import Work from 'containers/Work';
@@ -36,7 +33,7 @@ export class Works extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
-    const { works, match } = this.props;
+    const { works } = this.props;
     const worksGridProps = {
       works
     }
@@ -72,14 +69,13 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadWorks: (e)=>dispatch(loadWorks())
+    loadWorks: ()=>dispatch(loadWorks())
   };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'works', reducer });
 const withSaga = injectSaga({ key: 'works', saga });
-const withFileSaga = injectSaga({ key: 'file', fileSaga });
 
 export default compose(
   withReducer,

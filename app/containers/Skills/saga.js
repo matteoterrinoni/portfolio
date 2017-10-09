@@ -1,6 +1,6 @@
-import { take, call, put, select, takeEvery, takeLatest, fork } from 'redux-saga/effects';
+import { call, put, takeLatest, fork } from 'redux-saga/effects';
 
-import { LOAD_SKILL, EDIT_SKILL, PATCH_SKILL, ADD_SKILL, ADD_SKILL_SUCCESS } from './constants';
+import { LOAD_SKILL, EDIT_SKILL, PATCH_SKILL, ADD_SKILL } from './constants';
 import {
 	skillLoaded,
 	skillLoadingError,

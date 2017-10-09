@@ -11,8 +11,7 @@ export const ref = firebase.database().ref()
 export const firebaseAuth = firebase.auth
 
 export const getItems = (fire, name) => {
-	const promise = new Promise((resolve, reject) =>{
-		let items = {};
+	const promise = new Promise((resolve) =>{
 		fire.database().ref(name).once('value', function(items) {
 			items.forEach(function(childSnapshot) {
 				items[childSnapshot.key] = childSnapshot.val();

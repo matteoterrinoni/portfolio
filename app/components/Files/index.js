@@ -7,8 +7,6 @@
 import React from 'react';
 // import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import { baseKey } from 'components/Editing/model'
 import './style.scss'
 import File from 'containers/File/Loadable';
@@ -16,7 +14,7 @@ import { methodTypes } from 'containers/File/model';
 import { clone } from 'ramda'
 
 class Files extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-	static key = baseKey+'files';
+	static key = baseKey + 'files';
 	
 	constructor(props) {
 		super(props);
@@ -26,7 +24,7 @@ class Files extends React.PureComponent { // eslint-disable-line react/prefer-st
 
 	removeFile(e, i) {
 		e.preventDefault();
-		const { value, onChange  } = this.props;
+		const { value, onChange } = this.props;
 		let _value = clone(value)
 		_value.splice(i, 1)
 		onChange(_value)
@@ -34,21 +32,18 @@ class Files extends React.PureComponent { // eslint-disable-line react/prefer-st
 
 	render() {
 			const {
-				children,
-				onChange,
 				value,
-				coordinates,
-				...props,
+				coordinates
 			} = this.props;
 			return (
 				<div>
 					{
 						value && value.map((f, i)=>{
 							return (
-								<div className="list-item">
+								<div className='list-item'>
 									<File key={i} file={f} method={methodTypes.listView} />
-									<button onClick={(e)=>this.removeFile(e, i)} className="btn btn-default">
-										<i className="material-icons">close</i>
+									<button onClick={(e)=>this.removeFile(e, i)} className='btn btn-default'>
+										<i className='material-icons'>close</i>
 									</button>
 								</div>
 							)

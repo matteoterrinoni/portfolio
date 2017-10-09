@@ -11,10 +11,8 @@
  */
 
 import { fromJS } from 'immutable';
-import {merge, indexBy, prop} from 'ramda';
 
 import {
-  DEFAULT_LOCALE,
   TOGGLE_SIDEMENU
 } from './constants';
 

@@ -13,7 +13,7 @@ import {
   LOGIN_ERROR
 } from './constants';
 
-const initialState = fromJS({
+export const initialState = fromJS({
 	loading:false,
 	error:false,
 	user:false

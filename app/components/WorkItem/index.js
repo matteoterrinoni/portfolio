@@ -8,10 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 // import styled from 'styled-components';
-import Item from './animation';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import './style.scss';
 import { sections } from 'containers/App/sections';
 import { shallowProperties } from 'containers/Works/model';
@@ -27,8 +24,8 @@ class WorkItem extends React.PureComponent { // eslint-disable-line react/prefer
 	render() {
 		const { work } = this.props;
 		return !work ? null : (
-			<div className="work-grid-item">
-			<Link className="grid-item-wrapper" to={{pathname: `${sections.works.path}/${work.key}` }}>
+			<div className='work-grid-item'>
+			<Link className='grid-item-wrapper' to={{pathname: `${sections.works.path}/${work.key}` }}>
 				<InfoList list={
 					Object.keys(shallowProperties).map(key=>({
 						label:shallowProperties[key].label,

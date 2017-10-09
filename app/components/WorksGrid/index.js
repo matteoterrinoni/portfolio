@@ -31,7 +31,7 @@ class WorksGrid extends React.PureComponent { // eslint-disable-line react/prefe
 WorksGrid.propTypes = {
 	works: PropTypes.oneOfType([
 		PropTypes.object,
-		PropTypes.bool,
+		PropTypes.bool
 		])
 };
 

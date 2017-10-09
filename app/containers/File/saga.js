@@ -1,8 +1,6 @@
 import {
-	take,
 	call,
 	put,
-	select,
 	takeEvery,
 	takeLatest
 } from 'redux-saga/effects';
@@ -11,27 +9,16 @@ import { eventChannel } from 'redux-saga'
 import { merge } from 'ramda'
 
 import { FILE_UPLOAD, FILE_UPLOAD_SUCCESS, FILE_SYNC } from './constants';
-import { fileUploading, fileUploadSuccess, fileSyncSuccess, fileSyncError } from './actions';
+import { fileUploading, fileUploadSuccess, fileSyncSuccess } from './actions';
 import { addFileToWorkSuccess, addFileToWorkError } from 'containers/Works/actions';
-import rsf, {
-	getBaseUrl
-} from 'containers/App/firebase';
-
-
-function* fileUploadSuccessCall(info) {
-  try {
-  	const url = yield call(rsf.storage.getDownloadURL, info.file.name);
-    yield put(fileUploadSuccess(info));
-  }
-  catch(error) {
-    //yield put(addFileToWorkError(error));
-  }
-}
+import rsf from 'containers/App/firebase';
 
 
 function* percentage(snapshot, reducer) {
   const pct = snapshot.bytesTransferred * 100 / snapshot.totalBytes
-  yield put(fileUploading(merge(reducer.info, {uploading: pct})))
+  yield put(fileUploading(merge(reducer.info, {
+    uploading: pct
+  })))
   console.log(`${pct}%`);
 }
 
@@ -68,7 +55,9 @@ function* sendFileSaga(reducer) {
 
 function* addFileToWork(reducer) {
   try {
-    yield put(addFileToWorkSuccess({path:reducer.info.file.name, coordinates:reducer.info.coordinates}));
+    yield put(addFileToWorkSuccess({
+      path:reducer.info.file.name,
+      coordinates:reducer.info.coordinates}));
   }
   catch(error) {
     yield put(addFileToWorkError(error));

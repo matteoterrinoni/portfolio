@@ -9,7 +9,6 @@ const selectLoginDomain = (state) => state.get('login');
  * Other specific selectors
  */
 
-
 /**
  * Default selector used by Login
  */

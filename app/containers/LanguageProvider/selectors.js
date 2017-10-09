@@ -1,8 +1,5 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the languageToggle state domain
- */
 const selectLanguage = (state) => state.get('language');
 
 /**
@@ -16,5 +13,5 @@ const makeSelectLocale = () => createSelector(
 
 export {
   selectLanguage,
-  makeSelectLocale,
+  makeSelectLocale
 };

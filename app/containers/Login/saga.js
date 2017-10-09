@@ -1,18 +1,16 @@
-import { take, call, put, takeEvery, takeLatest, fork } from 'redux-saga/effects';
+import { take, call, put, takeEvery, fork } from 'redux-saga/effects';
 
-import rsf, { firebaseAuth } from 'containers/App/firebase'
+import rsf from 'containers/App/firebase'
 
 import {
 	LOGIN,
-	CHECK_LOGGED_IN
 } from './constants';
 
-import { login, loginSuccess, loginError, setUser } from './actions';
-import { indexBy, prop } from 'ramda';
+import { loginSuccess, loginError } from './actions';
 
-import { login as loginFetch, getToken, loggedIn} from 'containers/App/auth';
+import { loggedIn} from 'containers/App/auth';
 
-const authProvider = new firebaseAuth.GoogleAuthProvider();
+//const authProvider = new firebaseAuth.GoogleAuthProvider();
 
 export function* defaultSaga(reducer) {
 	try {
@@ -23,7 +21,7 @@ export function* defaultSaga(reducer) {
 	}
 }
 
-export function* checkLoginSaga(reducer) {
+export function* checkLoginSaga() {
 	const user = loggedIn();
 	console.log(user);
 	if(user){
@@ -36,9 +34,9 @@ export function* checkLoginSaga(reducer) {
 export function* syncUserSaga() {
   const channel = yield call(rsf.auth.channel);
 
-  while(true) {
-    const { error, user } = yield take(channel);
-
+  while (true) {
+    const { user } = yield take(channel);
+    
     if (user) yield put(loginSuccess(user));
     else yield put(loginError());
   }

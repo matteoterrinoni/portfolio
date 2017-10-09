@@ -1,4 +1,4 @@
-import { take, call, put, select, takeEvery, takeLatest, fork } from 'redux-saga/effects';
+import { call, put, takeLatest, fork } from 'redux-saga/effects';
 
 import { LOAD_WORK, EDIT_WORK, PATCH_WORK, ADD_FILE_TO_WORK, ADD_FILE_TO_WORK_SUCCESS } from 'containers/Works/constants';
 import {
@@ -40,7 +40,7 @@ export function* patchWorkSaga(reducer) {
 
 function* syncFileUrl(info) {
   try {
-    const url = yield call(rsf.storage.getDownloadURL, info.file.name);
+    yield call(rsf.storage.getDownloadURL, info.file.name);
     yield put(addFileToWorkSuccess({path:info.file.name, coordinates:info.coordinates}));
   }
   catch(error) {

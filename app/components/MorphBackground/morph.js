@@ -19,10 +19,13 @@ import anime from 'animejs';
 	}
 
 	// from http://www.quirksmode.org/js/events_properties.html#position
-	const getMousePos = (e) => {
+	const getMousePos = (event) => {
+		let e = event;
 		let posx = 0;
 		let posy = 0;
-		if (!e) {let e = window.event};
+		if (!e) {
+			e = window.event
+		}
 		if (e.pageX || e.pageY) 	{
 			posx = e.pageX;
 			posy = e.pageY;
@@ -41,19 +44,23 @@ import anime from 'animejs';
 
 	// From https://davidwalsh.name/javascript-debounce-function.
 	function debounce(func, wait, immediate) {
-		var timeout;
+		let timeout;
 		return function() {
-			var context = this, args = arguments;
-			var later = function() {
+			let context = this, args = arguments;
+			let later = function() {
 				timeout = null;
-				if (!immediate) func.apply(context, args);
-			};
-			var callNow = immediate && !timeout;
+				if (!immediate) {
+					func.apply(context, args);
+				}
+			}
+			let callNow = immediate && !timeout;
 			clearTimeout(timeout);
 			timeout = setTimeout(later, wait);
-			if (callNow) func.apply(context, args);
+			if (callNow) {
+				func.apply(context, args)
+			}
 		};
-	};
+	}
 
 	export default class MorphingBG {
 		constructor(el) {
@@ -81,8 +88,8 @@ import anime from 'animejs';
 		initEvents() {
 			// Mousemove event / Tilt functionality.
 			const tilt = {
-				tx: this.win.width/5,
-				ty: this.win.height/5,
+				tx: this.win.width / 5,
+				ty: this.win.height / 5,
 				rz: 8,
 				sx: [0.5,1],
 				sy: [0.5,1]
@@ -100,23 +107,35 @@ import anime from 'animejs';
 					}
 					else {
 						const mousepos = getMousePos(ev);					
-						const rotZ = 1*tilt.rz/this.win.height*mousepos.y - tilt.rz;
-						const scaleX = mousepos.x < this.win.width/1 ? lineEq(tilt.sx[0],tilt.sx[1],this.win.width/1,0,mousepos.x) : lineEq(tilt.sx[1],tilt.sx[0],this.win.width,this.win.width/2,mousepos.x);
-						const scaleY = mousepos.y < this.win.height/1 ? lineEq(tilt.sy[0],tilt.sy[1],this.win.height/1,0,mousepos.y) : lineEq(tilt.sy[1],tilt.sy[0],this.win.height,this.win.height/2,mousepos.y);
-						const transX = 1*tilt.tx/this.win.width*mousepos.x - tilt.tx;
-						const transY = 1*tilt.ty/this.win.height*mousepos.y - tilt.ty;
+						const rotZ = 1 * tilt.rz / this.win.height * mousepos.y - tilt.rz;
+						const scaleX = mousepos.x < this.win.width / 1 ?
+							lineEq(tilt.sx[0],tilt.sx[1],this.win.width / 1,0,mousepos.x) :
+							lineEq(tilt.sx[1],tilt.sx[0],this.win.width,this.win.width / 2,mousepos.x);
+						const scaleY = mousepos.y < this.win.height / 1 ?
+							lineEq(tilt.sy[0],tilt.sy[1],this.win.height / 1,0,mousepos.y) :
+							lineEq(tilt.sy[1],tilt.sy[0],this.win.height,this.win.height / 2,mousepos.y);
+						const transX = 1 * tilt.tx / this.win.width * mousepos.x - tilt.tx;
+						const transY = 1 * tilt.ty / this.win.height * mousepos.y - tilt.ty;
 
-						this.DOM.el.style.transform = `translate3d(${transX}px, ${transY}px,0) rotate3d(0,0,1,${rotZ}deg) scale3d(${scaleX},${scaleY},1)`;
+						this.DOM.el.style.transform = `
+							translate3d(${transX}px, ${transY}px,0) 
+							rotate3d(0,0,1,${rotZ}deg) 
+							scale3d(${scaleX},${scaleY},1)`;
 					}
 				});
 			};
 
 			// Window resize.
-			const onResizeFn = debounce(() => this.win = {width: window.innerWidth, height: window.innerHeight}, 20);
+			const onResizeFn = debounce(() => {
+				this.win = {
+					width: window.innerWidth,
+					height: window.innerHeight
+				}
+			}, 20);
 
 			document.addEventListener('mousemove', onMouseMoveFn, {passive: true});
 			document.addEventListener('touchstart', onMouseMoveFn, {passive: true});
-			window.addEventListener('resize', ev => onResizeFn(), {passive: true});
+			window.addEventListener('resize', () => onResizeFn(), {passive: true});
 		}
-	};
+	}
 

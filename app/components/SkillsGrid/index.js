@@ -14,18 +14,19 @@ import './style.scss'
 // import styled from 'styled-components';
 
 
-class SkillsGrid extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class SkillsGrid extends React.PureComponent {
+// eslint-disable-line react/prefer-stateless-function
 	render() {
 		const { skills, onAddSkill, user } = this.props;
 		return !skills ? null : (
-				<div className="skills-grid">
+				<div className='skills-grid'>
 					{ 
 						user &&
 						<button
-						type="button"
-						className="add-button btn btn-primary btn-sm"
+						type='button'
+						className='add-button btn btn-primary btn-sm'
 						onClick={onAddSkill}>
-							Add new Skill <i className="material-icons">add</i>
+							Add new Skill <i className='material-icons'>add</i>
 						</button>
 					}
 					<GridItems>
@@ -43,7 +44,7 @@ class SkillsGrid extends React.PureComponent { // eslint-disable-line react/pref
 SkillsGrid.propTypes = {
 	skills: PropTypes.oneOfType([
 		PropTypes.object,
-		PropTypes.bool,
+		PropTypes.bool
 		])
 };
 

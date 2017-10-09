@@ -8,18 +8,18 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   back: {
     id: 'app.components.MainNav.back',
-    defaultMessage: 'Back',
+    defaultMessage: 'Back'
   },
   home: {
     id: 'app.components.MainNav.home',
-    defaultMessage: 'Home',
+    defaultMessage: 'Home'
   },
   works: {
     id: 'app.components.MainNav.works',
-    defaultMessage: 'Works',
+    defaultMessage: 'Works'
   },
   skills: {
     id: 'app.components.MainNav.skills',
-    defaultMessage: 'Skills',
-  },
+    defaultMessage: 'Skills'
+  }
 });

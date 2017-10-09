@@ -16,11 +16,11 @@ export default function configureStore(initialState = {}, history) {
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
     sagaMiddleware,
-    routerMiddleware(history),
+    routerMiddleware(history)
   ];
 
   const enhancers = [
-    applyMiddleware(...middlewares),
+    applyMiddleware(...middlewares)
   ];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -30,9 +30,10 @@ export default function configureStore(initialState = {}, history) {
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // TODO Try to remove when `react-router-redux` is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading
+        // TODO Try to remove when `react-router-redux`
+        // is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading
         // Prevent recomputing reducers for `replaceReducer`
-        shouldHotReload: false,
+        shouldHotReload: false
       })
       : compose;
   /* eslint-enable */

@@ -8,14 +8,14 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   name: {
     id: 'app.components.SideMenu.name',
-    defaultMessage: 'Matteo',
+    defaultMessage: 'Matteo'
   },
   surname: {
   	id: 'app.components.SideMenu.surname',
-    defaultMessage: 'Terrinoni',
+    defaultMessage: 'Terrinoni'
   },
   subtitle: {
     id: 'app.components.SideMenu.subtitle',
-    defaultMessage: 'Front-end | UI | UX',
-  },
+    defaultMessage: 'Front-end | UI | UX'
+  }
 });

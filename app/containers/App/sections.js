@@ -5,12 +5,12 @@ export const sections = {
     matchPath: [{
       path: '/works',
       exact: false,
-      strict: false,
+      strict: false
     }, {
       path: '/',
       exact: true,
-      strict: false,
-    }],
+      strict: false
+    }]
   },
   skills: {
     path: '/skills',
@@ -18,7 +18,7 @@ export const sections = {
     matchPath: [{
       path: '/skills',
       exact: false,
-      strict: false,
-    }],
-  },
-};
+      strict: false
+    }]
+  }
+}
