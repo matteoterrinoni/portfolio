@@ -25,7 +25,7 @@ class Code extends React.PureComponent { // eslint-disable-line react/prefer-sta
 			theme='monokai'
 			name='code'
 			onLoad={null}
-			onChange={e=>onChange(e)}
+			onChange={onChange}
 			fontSize={14}
 			showPrintMargin={false}
 			showGutter={false}
